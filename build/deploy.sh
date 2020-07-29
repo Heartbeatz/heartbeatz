@@ -18,7 +18,7 @@ then
   NAMESPACE=`echo "heartbeat-"$BRANCH`
 fi
 echo "Namespace: $NAMESPACE"
-kubectl create namespace "$NAMESPACE"
+kubectl get namespace "$NAMESPACE" || kubectl create namespace "$NAMESPACE"
 
 if [[ -z "$STORAGECLASS" ]]
 then
