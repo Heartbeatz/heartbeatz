@@ -19,3 +19,6 @@ bash ./server/build.sh
 
 echo "Starting agent build..."
 bash ./agent/build.sh
+
+echo "Deploying Application..."
+bash ./build/deploy.sh
