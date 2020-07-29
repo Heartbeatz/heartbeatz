@@ -2,7 +2,7 @@
 set -e
 
 echo "Switching kubectl context..."
-kubectl config use-context "$KUBECONTEXT"
+kubectl config use-context "$KUBE_CONTEXT"
 
 echo "Verifing cluster access..."
 kubectl cluster-info 
