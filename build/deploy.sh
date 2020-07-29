@@ -47,12 +47,14 @@ echo "Prometheus Namespace: $Prometheus_Namespace"
 echo "Deploying Database..."
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
-helm install --namespace "$NAMESPACE" mariadb bitnami/mariadb-galera \
---set global.storageClass = "$STORAGECLASS" \
---set db.user = "$DB_USER" \
---set db.name = "$DB_NAME" \
---set metrics.enabled = true \
---set metrics.serviceMonitor.enabled = true \
---set metrics.serviceMonitor.namespace = "$Prometheus_Namespace" \
---set metrics.serviceMonitor.interval = 5s \
---set metrics.prometheusRules.enabled = true
+helm install mariadb \
+--namespace "$NAMESPACE" \
+--set global.storageClass="$STORAGECLASS" \
+--set db.user="$DB_USER" \
+--set db.name="$DB_NAME" \
+--set metrics.enabled=true \
+--set metrics.serviceMonitor.enabled=true \
+--set metrics.serviceMonitor.namespace="$Prometheus_Namespace" \
+--set metrics.serviceMonitor.interval=5s \
+--set metrics.prometheusRules.enabled=true \
+bitnami/mariadb-galera
