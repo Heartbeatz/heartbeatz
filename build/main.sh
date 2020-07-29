@@ -1,4 +1,6 @@
-#!/bin/bash +x
+#!/bin/bash
+set -e
+
 echo "GIT_COMMIT: $GIT_COMMIT"
 echo "GIT_USERNAME $GIT_USERNAME"
 echo "BRANCH: $BRANCH"
@@ -12,3 +14,9 @@ then
   echo "Missing environment variables"
   exit 1
 fi
+
+echo "Starting server build..."
+bash ./server/build.sh
+
+echo "Starting agent build..."
+bash ./agent/build.sh
